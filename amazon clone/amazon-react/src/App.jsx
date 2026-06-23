@@ -1,112 +1,122 @@
-// ── src/App.jsx ──
-import { useState, useRef, useEffect } from 'react'
-import { PRODUCTS } from './data/products'
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from './assets/vite.svg'
+import heroImg from './assets/hero.png'
+import './App.css'
 
-import Navbar       from './components/Navbar/Navbar'
-import MobileMenu   from './components/Navbar/MobileMenu'
-import HeroSlider   from './components/Hero/HeroSlider'
-import CategoryGrid from './components/Categories/CategoryGrid'
-import ProductGrid  from './components/Products/ProductGrid'
-import CartSidebar  from './components/Cart/CartSidebar'
-import Footer       from './components/Footer/Footer'
-import Toast        from './components/UI/Toast'
-
-import { useCart }  from './hooks/useCart'
-import { useToast } from './hooks/useToast'
-
-export default function App() {
-  const { cart, addToCart, changeQty, removeFromCart, cartCount, cartTotal } = useCart()
-  const { toast, showToast } = useToast()
-
-  const [cartOpen,   setCartOpen]   = useState(false)
-  const [menuOpen,   setMenuOpen]   = useState(false)
-  const [searchVal,  setSearchVal]  = useState('')
-  const [filtered,   setFiltered]   = useState(PRODUCTS)
-
-  const dealsRef = useRef(null)
-
-  // Lock body scroll when overlays open
-  useEffect(() => {
-    document.body.style.overflow = (cartOpen || menuOpen) ? 'hidden' : ''
-  }, [cartOpen, menuOpen])
-
-  // Close on Escape
-  useEffect(() => {
-    const handler = (e) => {
-      if (e.key === 'Escape') { setCartOpen(false); setMenuOpen(false) }
-    }
-    document.addEventListener('keydown', handler)
-    return () => document.removeEventListener('keydown', handler)
-  }, [])
-
-  const handleAddToCart = (product) => {
-    addToCart(product)
-    showToast(`"${product.title.slice(0, 40)}…" added to cart`)
-  }
-
-  const handleSearch = () => {
-    const q = searchVal.trim().toLowerCase()
-    const results = q ? PRODUCTS.filter((p) => p.title.toLowerCase().includes(q)) : PRODUCTS
-    setFiltered(results)
-    dealsRef.current?.scrollIntoView({ behavior: 'smooth' })
-    if (q && results.length === 0) {
-      showToast('No results found. Showing all deals.')
-      setFiltered(PRODUCTS)
-    }
-  }
+function App() {
+  const [count, setCount] = useState(0)
 
   return (
-    <div style={{ minHeight: '100vh' }}>
-      {/* Navbar */}
-      <Navbar
-        cartCount={cartCount}
-        searchVal={searchVal}
-        onSearchChange={setSearchVal}
-        onSearch={handleSearch}
-        onCartOpen={() => setCartOpen(true)}
-        onMenuOpen={() => setMenuOpen(true)}
-      />
+    <>
+      <section id="center">
+        <div className="hero">
+          <img src={heroImg} className="base" width="170" height="179" alt="" />
+          <img src={reactLogo} className="framework" alt="React logo" />
+          <img src={viteLogo} className="vite" alt="Vite logo" />
+        </div>
+        <div>
+          <h1>Get started</h1>
+          <p>
+            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+          </p>
+        </div>
+        <button
+          type="button"
+          className="counter"
+          onClick={() => setCount((count) => count + 1)}
+        >
+          Count is {count}
+        </button>
+      </section>
 
-      {/* Hero */}
-      <HeroSlider />
+      <div className="ticks"></div>
 
-      {/* India redirect banner */}
-      <div style={{
-        background: '#f8f8f8', borderTop: '1px solid #ddd', borderBottom: '1px solid #ddd',
-        textAlign: 'center', padding: '8px 12px', fontSize: 12, color: '#555',
-      }}>
-        You are on amazon.com. You can also shop on{' '}
-        <a href="#" style={{ color: '#007185' }}>Amazon India</a> for millions of products.{' '}
-        <a href="#" style={{ color: '#007185' }}>Click here to go to amazon.in</a>
-      </div>
+      <section id="next-steps">
+        <div id="docs">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#documentation-icon"></use>
+          </svg>
+          <h2>Documentation</h2>
+          <p>Your questions, answered</p>
+          <ul>
+            <li>
+              <a href="https://vite.dev/" target="_blank">
+                <img className="logo" src={viteLogo} alt="" />
+                Explore Vite
+              </a>
+            </li>
+            <li>
+              <a href="https://react.dev/" target="_blank">
+                <img className="button-icon" src={reactLogo} alt="" />
+                Learn more
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="social">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#social-icon"></use>
+          </svg>
+          <h2>Connect with us</h2>
+          <p>Join the Vite community</p>
+          <ul>
+            <li>
+              <a href="https://github.com/vitejs/vite" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#github-icon"></use>
+                </svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://chat.vite.dev/" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#discord-icon"></use>
+                </svg>
+                Discord
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/vite_js" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#x-icon"></use>
+                </svg>
+                X.com
+              </a>
+            </li>
+            <li>
+              <a href="https://bsky.app/profile/vite.dev" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#bluesky-icon"></use>
+                </svg>
+                Bluesky
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-      {/* Main content */}
-      <main style={{ maxWidth: 1500, margin: '0 auto', padding: '16px 12px' }}>
-        <CategoryGrid />
-        <ProductGrid
-          ref={dealsRef}
-          products={filtered}
-          onAddToCart={handleAddToCart}
-        />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-
-      {/* Overlays */}
-      {cartOpen && (
-        <CartSidebar
-          cart={cart}
-          cartTotal={cartTotal}
-          onClose={() => setCartOpen(false)}
-          onQty={changeQty}
-          onRemove={removeFromCart}
-        />
-      )}
-      {menuOpen && <MobileMenu onClose={() => setMenuOpen(false)} />}
-
-      {/* Toast */}
-      <Toast message={toast.message} visible={toast.visible} />
-    </div>
+      <div className="ticks"></div>
+      <section id="spacer"></section>
+    </>
   )
 }
+
+export default App

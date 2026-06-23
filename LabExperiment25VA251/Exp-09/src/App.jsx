@@ -1,122 +1,151 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Form data state
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  // Error messages state
+  const [errors, setErrors] = useState({});
+
+  // Success state
+  const [submitted, setSubmitted] = useState(false);
+
+  // useEffect — runs once when component mounts
+  useEffect(() => {
+    console.log("Component mounted! useEffect ran.");
+    document.title = "Registration Form";
+  }, []); // empty [] means run only once
+
+  // Handle input changes
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+
+    // Clear error for this field when user types
+    setErrors({ ...errors, [name]: "" });
+  }
+
+  // Validate form fields
+  function validate() {
+    const newErrors = {};
+
+    if (form.name.trim() === "") {
+      newErrors.name = "Name should not be empty.";
+    }
+
+    if (!form.email.includes("@")) {
+      newErrors.email = "Email must contain @.";
+    }
+
+    if (form.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters.";
+    }
+
+    return newErrors;
+  }
+
+  // Handle form submission
+  function handleSubmit(e) {
+    e.preventDefault();
+    const validationErrors = validate();
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+      setErrors({});
+      setSubmitted(true);
+    }
+  }
+
+  // Reset form
+  function handleReset() {
+    setForm({ name: "", email: "", password: "" });
+    setErrors({});
+    setSubmitted(false);
+  }
+
+  // Show success screen after valid submission
+  if (submitted) {
+    return (
+      <div className="app">
+        <div className="card success-card">
+          <div className="success-icon">✓</div>
+          <h2>Registration Successful!</h2>
+          <p>Welcome, <strong>{form.name}</strong>!</p>
+          <p className="success-email">{form.email}</p>
+          <button className="btn btn-primary" onClick={handleReset}>
+            Register Another
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app">
+      <div className="card">
+        <h1 className="title">Registration Form</h1>
+        <p className="subtitle">Experiment 9 — useState + useEffect + Validation</p>
 
-      <div className="ticks"></div>
+        <form onSubmit={handleSubmit} noValidate>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+          {/* Name Field */}
+          <div className="field">
+            <label htmlFor="name">Full Name</label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              placeholder="Enter your name"
+              value={form.name}
+              onChange={handleChange}
+              className={errors.name ? "input-error" : ""}
+            />
+            {errors.name && <span className="error">{errors.name}</span>}
+          </div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+          {/* Email Field */}
+          <div className="field">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="text"
+              name="email"
+              placeholder="Enter your email"
+              value={form.email}
+              onChange={handleChange}
+              className={errors.email ? "input-error" : ""}
+            />
+            {errors.email && <span className="error">{errors.email}</span>}
+          </div>
+
+          {/* Password Field */}
+          <div className="field">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Min. 6 characters"
+              value={form.password}
+              onChange={handleChange}
+              className={errors.password ? "input-error" : ""}
+            />
+            {errors.password && <span className="error">{errors.password}</span>}
+          </div>
+
+          <button type="submit" className="btn btn-primary">
+            Register
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

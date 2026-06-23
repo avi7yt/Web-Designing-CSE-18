@@ -1,0 +1,75 @@
+/* ── src/components/Categories/CategoryCard.module.css ── */
+.card {
+  background: white;
+  padding: 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s;
+}
+.card:hover { box-shadow: var(--shadow-hover); }
+
+.title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.link {
+  color: var(--link);
+  font-size: 13px;
+  margin-top: auto;
+}
+.link:hover { color: var(--link-hover); text-decoration: underline; }
+
+/* Single */
+.singleImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+}
+
+/* Quad */
+.quad {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.quadItem { display: flex; flex-direction: column; gap: 4px; }
+.quadImg {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 2px;
+  background: #f3f3f3;
+}
+.itemLabel { font-size: 11px; color: #333; }
+
+/* Kitchen */
+.kitchen { margin-bottom: 12px; }
+.kitchenMain {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 4px;
+}
+.kitchenLabel { font-size: 12px; display: block; margin-bottom: 8px; }
+.kitchenRow   { display: flex; gap: 6px; }
+.kitchenItem  { flex: 1; text-align: center; }
+.kitchenSubImg  { width: 100%; height: 60px; object-fit: cover; border-radius: 2px; }
+.kitchenSubLabel { font-size: 10px; color: #333; }
+
+/* Responsive */
+@media (max-width: 480px) {
+  .title { font-size: 13px; }
+  .singleImg { height: 140px; }
+  .quadImg { height: 65px; }
+  .kitchenMain { height: 100px; }
+  .kitchenSubImg { height: 50px; }
+}

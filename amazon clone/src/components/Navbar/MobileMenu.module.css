@@ -1,0 +1,62 @@
+/* ── src/components/Navbar/MobileMenu.module.css ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 3000;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  background: #1a252f;
+  z-index: 3001;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  animation: slideInLeft 0.3s ease;
+}
+
+.header {
+  background: var(--navy);
+  color: white;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.nav { display: flex; flex-direction: column; }
+
+.link {
+  color: white;
+  font-size: 14px;
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: block;
+  transition: background 0.15s;
+}
+.link:hover { background: rgba(255,255,255,0.08); }
+
+.prime { color: var(--prime-blue) !important; font-weight: 700; }
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin: 8px 0;
+}

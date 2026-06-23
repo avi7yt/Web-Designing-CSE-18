@@ -1,0 +1,117 @@
+/* ── src/components/Navbar/NavTop.module.css ── */
+.nav {
+  display: flex;
+  align-items: center;
+  background: var(--dark);
+  padding: 8px 12px;
+  color: white;
+  min-height: 56px;
+  gap: 4px;
+}
+
+.mobile {
+  flex-wrap: wrap;
+  padding: 6px 10px;
+  gap: 6px;
+}
+
+.logo {
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
+  cursor: pointer;
+  flex-shrink: 0;
+  order: 1;
+}
+.logo:hover { border-color: white; }
+
+.deliver {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s;
+  flex-shrink: 0;
+  order: 2;
+}
+.deliver:hover { border-color: white; }
+.deliverIcon { font-size: 16px; }
+.deliver > div { display: flex; flex-direction: column; }
+.deliverTop    { font-size: 11px; color: #ccc; }
+.deliverBottom { font-size: 13px; font-weight: 700; }
+
+.searchWrap {
+  flex: 1;
+  margin: 0 8px;
+  order: 3;
+  min-width: 0;
+}
+.mobile .searchWrap {
+  order: 10;
+  flex: 1 1 100%;
+  margin: 2px 0;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  margin-left: 4px;
+  order: 4;
+}
+.mobile .right { margin-left: auto; }
+
+.navItem {
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  transition: border-color 0.2s;
+}
+.navItem:hover { border-color: white; }
+
+.small { font-size: 11px; color: #ccc; }
+.bold  { font-size: 13px; font-weight: 700; }
+
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s;
+}
+.cart:hover { border-color: white; }
+.cartIcon { font-size: 20px; }
+
+.cartBadge {
+  position: absolute;
+  top: 0;
+  left: 22px;
+  background: var(--orange);
+  color: var(--dark);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .cartBadge { left: 16px; width: 16px; height: 16px; font-size: 10px; }
+  .cartIcon  { font-size: 18px; }
+}

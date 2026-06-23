@@ -1,0 +1,95 @@
+// ── src/data/categories.js ──
+export const CATEGORIES = [
+  {
+    id: 'gaming',
+    title: 'Get your game on',
+    type: 'single',
+    img: 'https://images.unsplash.com/photo-1593640495253-23196b27a87f?w=400&q=80',
+    link: 'Shop gaming',
+  },
+  {
+    id: 'fashion',
+    title: 'Shop Fashion for less',
+    type: 'quad',
+    items: [
+      { label: 'Jeans under $50',   img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=200&q=80' },
+      { label: 'Tops under $25',    img: 'https://images.unsplash.com/photo-1503342394128-c104d54dba01?w=200&q=80' },
+      { label: 'Dresses under $30', img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=200&q=80' },
+      { label: 'Shoes under $50',   img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=200&q=80' },
+    ],
+    link: 'See all deals',
+  },
+  {
+    id: 'kitchen',
+    title: 'Top categories in Kitchen appliances',
+    type: 'kitchen',
+    mainImg: 'https://images.unsplash.com/photo-1585515320310-259814833e62?w=400&q=80',
+    mainLabel: 'Cooker',
+    items: [
+      { label: 'Coffee',     img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=120&q=80' },
+      { label: 'Pots & Pa…', img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=120&q=80' },
+      { label: 'Kettles',    img: 'https://images.unsplash.com/photo-1585515319927-7b67c3e1ea8c?w=120&q=80' },
+    ],
+    link: 'Explore all products in Kitchen',
+  },
+  {
+    id: 'momgifts',
+    title: 'Find gifts for Mom',
+    type: 'quad',
+    items: [
+      { label: 'Apparel',  img: 'https://images.unsplash.com/photo-1594938298603-c8148c4b4e17?w=200&q=80' },
+      { label: 'Shoes',    img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&q=80' },
+      { label: 'Jewelry',  img: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=200&q=80' },
+      { label: 'Handbags', img: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=200&q=80' },
+    ],
+    link: "Shop Mother's Day gifts",
+  },
+  {
+    id: 'home',
+    title: 'New home arrivals under $50',
+    type: 'quad',
+    items: [
+      { label: 'Furniture', img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&q=80' },
+      { label: 'Lighting',  img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80' },
+      { label: 'Bedding',   img: 'https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=200&q=80' },
+      { label: 'Decor',     img: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=200&q=80' },
+    ],
+    link: 'Shop home',
+  },
+  {
+    id: 'tech',
+    title: 'Gifts for techie Mom',
+    type: 'quad',
+    items: [
+      { label: 'Headphones', img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&q=80' },
+      { label: 'Smartwatch', img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80' },
+      { label: 'Tablets',    img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=200&q=80' },
+      { label: 'Fitness',    img: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=200&q=80' },
+    ],
+    link: 'Shop tech gifts',
+  },
+  {
+    id: 'trends',
+    title: 'Fashion trends you like',
+    type: 'quad',
+    items: [
+      { label: 'Women', img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200&q=80' },
+      { label: 'Men',   img: 'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=200&q=80' },
+      { label: 'Girls', img: 'https://images.unsplash.com/photo-1519278409-1f56ab241a7e?w=200&q=80' },
+      { label: 'Boys',  img: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=200&q=80' },
+    ],
+    link: 'See all trends',
+  },
+  {
+    id: 'beauty',
+    title: 'Gifts Mom wants',
+    type: 'quad',
+    items: [
+      { label: 'Skincare',  img: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&q=80' },
+      { label: 'Beauty',    img: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200&q=80' },
+      { label: 'Fragrance', img: 'https://images.unsplash.com/photo-1602532305019-3dbbd482dae9?w=200&q=80' },
+      { label: 'Spa',       img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=200&q=80' },
+    ],
+    link: 'Shop gifts',
+  },
+]

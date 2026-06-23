@@ -1,0 +1,49 @@
+/* ── src/components/UI/SearchBar.module.css ── */
+.wrapper {
+  display: flex;
+  height: 40px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 2px solid var(--orange);
+  flex: 1;
+}
+
+.category {
+  height: 100%;
+  background: #f3f3f3;
+  border: none;
+  border-right: 1px solid #cdcdcd;
+  padding: 0 8px;
+  font-size: 12px;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  min-width: 60px;
+}
+
+.input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 0 10px;
+  color: #333;
+  background: white;
+  min-width: 0;
+}
+
+.btn {
+  width: 46px;
+  height: 100%;
+  background: var(--orange);
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.btn:hover {
+  background: #e47911;
+}

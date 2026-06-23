@@ -1,0 +1,84 @@
+/* ── src/components/Hero/HeroSlider.module.css ── */
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.content { max-width: 400px; }
+.content h2 {
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.content p  { font-size: 16px; color: #333; margin-bottom: 20px; }
+.cta {
+  background: var(--yellow);
+  border: 1px solid #c7a600;
+  border-radius: var(--radius);
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.cta:hover { background: var(--yellow-hover); }
+
+.emoji { user-select: none; }
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.85);
+  border: none;
+  width: 40px;
+  height: 80px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s;
+}
+.arrow:hover { background: rgba(255,255,255,0.97); }
+.prev { left: 0;  border-radius: 0 4px 4px 0; }
+.next { right: 0; border-radius: 4px 0 0 4px; }
+
+.dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.dotActive { background: rgba(0,0,0,0.7); }
+
+@media (max-width: 600px) {
+  .arrow { width: 28px; height: 60px; font-size: 14px; }
+  .slide { gap: 12px; }
+}

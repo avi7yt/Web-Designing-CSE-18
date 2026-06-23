@@ -1,0 +1,58 @@
+/* ── src/components/Footer/Footer.module.css ── */
+.footer { margin-top: 40px; }
+
+.backTop {
+  background: var(--navy-light);
+  color: white;
+  text-align: center;
+  padding: 14px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+.backTop:hover { background: #485769; }
+
+.links {
+  background: var(--dark);
+  color: #ddd;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 40px 60px;
+}
+
+.col { display: flex; flex-direction: column; gap: 8px; }
+
+.colHeading { color: white; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+
+.colLink { color: #ddd; font-size: 13px; transition: color 0.2s; }
+.colLink:hover { color: white; }
+
+.bottom {
+  background: var(--navy);
+  color: #999;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid #374151;
+}
+
+.copy { font-size: 12px; }
+
+.policies { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.policies a { color: #999; font-size: 12px; transition: color 0.2s; }
+.policies a:hover { color: white; text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .links { grid-template-columns: 1fr 1fr; padding: 24px 20px; }
+}
+@media (max-width: 480px) {
+  .links { grid-template-columns: 1fr 1fr; padding: 20px 16px; }
+  .colHeading { font-size: 13px; }
+  .colLink { font-size: 12px; }
+  .policies { gap: 10px; }
+  .policies a { font-size: 11px; }
+}
